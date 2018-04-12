@@ -967,7 +967,8 @@ class Robinhood:
     def place_sell_order(self,
                          instrument,
                          quantity,
-                         bid_price=0.0):
+                         bid_price=0.0,
+                         o='market'):
         """Wrapper for placing sell orders
 
             Args:
@@ -981,7 +982,7 @@ class Robinhood:
 
         transaction = Transaction.SELL
 
-        return self.place_order(instrument, quantity, bid_price, transaction)
+        return self.place_order(instrument, quantity, bid_price, transaction, order=o)
 
     # Methods below here are a complete rewrite for buying and selling
     # These are new. Use at your own risk!
