@@ -122,7 +122,7 @@ class Robinhood:
             (bool): received valid auth token
 
         """
-
+        print("IN LOGIN")
         self.username = username
         self.password = password
         payload = {
