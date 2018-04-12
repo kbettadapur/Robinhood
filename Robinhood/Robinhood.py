@@ -122,7 +122,6 @@ class Robinhood:
             (bool): received valid auth token
 
         """
-        print("IN LOGIN")
         self.username = username
         self.password = password
         payload = {
@@ -926,6 +925,8 @@ class Robinhood:
             'type': order.lower()
         }
 
+        print(payload)
+
         #data = 'account=%s&instrument=%s&price=%f&quantity=%d&side=%s&symbol=%s#&time_in_force=gfd&trigger=immediate&type=market' % (
         #    self.get_account()['url'],
         #    urllib.parse.unquote(instrument['url']),
@@ -935,8 +936,8 @@ class Robinhood:
         #    instrument['symbol']
         #)
 
-        res = self.session.post(endpoints.orders(), data=payload, timeout=15)
-        res.raise_for_status()
+        #res = self.session.post(endpoints.orders(), data=payload, timeout=15)
+        #res.raise_for_status()
 
         return res
 
@@ -944,7 +945,8 @@ class Robinhood:
     def place_buy_order(self,
                         instrument,
                         quantity,
-                        bid_price=0.0):
+                        bid_price=0.0,
+                        o='market'):
         """Wrapper for placing buy orders
 
             Args:
@@ -959,7 +961,7 @@ class Robinhood:
 
         transaction = Transaction.BUY
 
-        return self.place_order(instrument, quantity, bid_price, transaction)
+        return self.place_order(instrument, quantity, bid_price, transaction, order=o)
 
 
     def place_sell_order(self,
