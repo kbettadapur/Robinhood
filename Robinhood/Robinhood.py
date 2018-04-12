@@ -936,8 +936,8 @@ class Robinhood:
         #    instrument['symbol']
         #)
 
-        #res = self.session.post(endpoints.orders(), data=payload, timeout=15)
-        #res.raise_for_status()
+        res = self.session.post(endpoints.orders(), data=payload, timeout=15)
+        res.raise_for_status()
 
         return res
 
@@ -961,7 +961,7 @@ class Robinhood:
 
         transaction = Transaction.BUY
 
-        return self.place_order(instrument, quantity, bid_price, transaction, order=o)
+        return self.place_order(instrument, quantity, str(bid_price), transaction, order=o)
 
 
     def place_sell_order(self,
