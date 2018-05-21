@@ -1377,6 +1377,7 @@ class Robinhood:
         else:
             raise ValueError('Cancelling orders requires a valid order_id string')
 
+        print(order)
         if order.get('cancel') is not None:
             try: 
                 res = self.session.post(order['cancel'], timeout=15)
