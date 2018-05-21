@@ -1368,7 +1368,7 @@ class Robinhood:
         Returns:
             (:obj:`requests.request`): result from `orders` put command
         """
-        if order_id is str:
+        if True:
             try:
                 order = self.session.get(self.endpoints['orders'] + order_id, timeout=15).json()
             except (requests.exceptions.HTTPError) as err_msg:
